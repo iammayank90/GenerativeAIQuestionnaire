@@ -6,7 +6,7 @@
 
 
 function createquestions() {
-    const apiKey = "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"; // Your OpenAI API key
+    const apiKey = "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"; // Your OpenAI API key
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
 
@@ -46,6 +46,7 @@ function createquestions() {
         return response.json();
     }).then(data => {
         let msgresponse = data.choices[0].message.content;
+        localStorage.setItem('sessionData', msgresponse);
         const questions = msgresponse.split("\n");
 
         const listElement = document.getElementById('queryList');
@@ -56,7 +57,7 @@ function createquestions() {
             listElement.appendChild(listItem);
         });
 
-        localStorage.setItem('sessionData', msgresponse);
+        
 
         console.log(data); // Process the response data
     }).catch(error => {
@@ -87,8 +88,29 @@ function exportquest() {
     if (sessionData != '') {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
+        let lines = sessionData.split("\n");
 
         doc.text(sessionData.split("\n"), 20, 20);
+
+
+        let y = 20; // Initial Y offset
+
+        lines.forEach(line => {
+            if (line.trim() !== '') {
+                doc.text(line, 20, y);
+                y += 10; // Increase Y offset for each line
+            } else {
+                y += 5; // Add a smaller space for empty lines (paragraph spacing)
+            }
+
+            // Check if we're near the bottom of the page
+            if (y > 280) {
+                doc.addPage();
+                y = 20; // Reset Y offset
+            }
+        });
+
+
         doc.save("example.pdf");
     }
     else {
