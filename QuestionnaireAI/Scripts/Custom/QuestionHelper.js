@@ -6,7 +6,7 @@
 
 
 function createquestions() {
-    const apiKey = "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"; // Your OpenAI API key
+    const apiKey = "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"; // Your OpenAI API key
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
 
@@ -19,9 +19,9 @@ function createquestions() {
             { "role": "user", "content": input },
             { "role": "user", "content": "give 50 questions for due diligence" },
             { "role": "user", "content": "Set the response in number order" },
-            { "role": "user", "content": "Make yes/no, dropdown, multichose checkbox, radio button and text box questions as well" },
+            { "role": "user", "content": "Make dropdown, multichose checkbox, radio button and text box questions as well" },
             { "role": "user", "content": "By all questions third party should be accepted or rejected" },
-            { "role": "user", "content": "give appropriate answers and don't give half or empty text" },
+            { "role": "user", "content": "give appropriate answers only having number and don't give half or empty Answer" },
             { "role": "user", "content": "include all type of questions" }
         ],
         temperature: 1,
