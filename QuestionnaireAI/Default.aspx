@@ -84,6 +84,43 @@
             margin-bottom: 10px;
             border-radius: 5px;
         }
+
+       #list-container {
+  font-family: Arial, sans-serif;
+}
+
+#filter-input {
+  margin-bottom: 20px;
+  width: calc(100% - 20px); /* Adjust input width to account for padding */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+ul li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul li:hover {
+  background-color: #f0f0f0;
+}
+
+
     </style>
 
 </head>
@@ -94,8 +131,6 @@
         </ul>
         <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#" role="button">Contact</a></li>
         </ul>
     </nav>
     <main class="container">
@@ -103,32 +138,32 @@
             <section>
                 <hgroup>
                     <h2>Enter Your Queries</h2>
-                    <h3>Simple and Efficient</h3>
+                    <h3>QuestionnaireAI is an AI tool for creating and analyzing questionnaires, enhancing data collection and analysis.</h3>
                 </hgroup>
-                <p>Use the form below to submit your queries. Manage and export responses with ease.</p>
+                <p>Manage and export responses with ease to import in Forms and workflow.</p>
                 <form id="queryForm" class="grid">
-                    <input type="text" id="queryInput" name="queryInput" placeholder="Your query..." aria-label="Query input" required />
+                    <input type="text" id="queryInput" name="queryInput" placeholder="Enter vendor's bussiness type" aria-label="Query input" required />
                     <button type="button" onclick="createquestions()">Submit</button>
                     <button type="button" onclick="clearFields()">Clear</button>
                 </form>
                 <section aria-label="Query Results">
                     <h2>Results</h2>
-                    <ul id="queryList"></ul>                   
+                    <div id="list-container">
+                        <input type="text" id="filter-input" placeholder="Filter items..." style="display: none">
+                        <ul id="dynamic-list"></ul>
+                    </div>
                 </section>
                 <div id="exportsec" style="display: none">
                     <p>Export the AI generated responses to PDF</p>
-                     <button type="button" onclick="exportquest()" class="export-button" style="width: auto;">Export</button>
+                    <button type="button" onclick="exportquest()" class="export-button" style="width: auto;">Export Response to PDF</button>
                     <p>Choose MRQ or DDQ templates to add the AI generated responses</p>
-                    <input type="file" id="upload" accept=".xlsx, .xls" />                    
+                    <input type="file" id="upload" accept=".xlsx, .xls" />
                     <button type="button" id="addRows" style="display: none">Add Answers to Excel & Download</button>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
                 </div>
-            </section>       
-            </div>
+            </section>
+        </div>
     </main>
-    <footer class="container">
-        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></small>
-    </footer>
 </body>
 </html>
 

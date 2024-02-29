@@ -4,7 +4,7 @@
 
 
 function createquestions() {
-    const apiKey = "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"; // Your OpenAI API key
+    const apiKey = "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"; // Your OpenAI API key
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
 
@@ -46,17 +46,33 @@ function createquestions() {
         localStorage.setItem('sessionData', msgresponse);
         const questions = msgresponse.split("\n");
 
-        const listElement = document.getElementById('queryList');
+        const listContainer = document.getElementById('dynamic-list');
+        const filterInput = document.getElementById('filter-input');
 
-        questions.forEach(question => {
-            const listItem = document.createElement('li');
-            listItem.textContent = question;
-            listElement.appendChild(listItem);
-        });
+        // Function to populate the list
+        function populateList(items) {
+            listContainer.innerHTML = ''; // Clear current list
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                listContainer.appendChild(li);
+            });
+        }
 
-        var divexcel = document.getElementById('exportsec');
-        divexcel.style.display = 'block';
+        // Function to filter the list based on input
+        function filterList() {
+            const searchText = filterInput.value.toLowerCase();
+            const filteredItems = questions.filter(item => item.toLowerCase().includes(searchText));
+            populateList(filteredItems);
+        }
 
+        // Event listener for filter input
+        filterInput.addEventListener('input', filterList);
+
+        // Initial population of the list
+        populateList(questions);
+        showhide('exportsec', 'block');
+        showhide('filter-input', 'block');
     }).catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
     });
@@ -104,8 +120,7 @@ function clearFields() {
     localStorage.setItem('sessionData', '');
     document.getElementById('queryInput').value = '';
     document.getElementById('queryList').innerHTML = '';
-    var divexcel = document.getElementById('exportsec');
-    divexcel.style.display = 'none'
+    showhide('exportsec', 'none');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -166,3 +181,10 @@ document.addEventListener('DOMContentLoaded', function () {
         XLSX.writeFile(window.modifiedWorkbook, 'ModifiedFile.xlsx');
     });
 });
+
+function showhide(divId, displayVal) {
+    var divElem = document.getElementById(divId);
+    if (divElem != '') {
+        divElem.style.display = displayVal;
+    }    
+}
