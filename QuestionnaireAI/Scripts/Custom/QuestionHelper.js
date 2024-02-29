@@ -4,7 +4,7 @@
 
 
 function createquestions() {
-    const apiKey = "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"; // Your OpenAI API key
+    const apiKey = "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"; // Your OpenAI API key
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
 
@@ -54,9 +54,9 @@ function createquestions() {
             listElement.appendChild(listItem);
         });
 
-        
+        var divexcel = document.getElementById('exportsec');
+        divexcel.style.display = 'block';
 
-        console.log(data); // Process the response data
     }).catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
     });
@@ -64,16 +64,15 @@ function createquestions() {
 }
 
 
-function exportquest() {    
+function exportquest() {
 
     var sessionData = localStorage.getItem('sessionData');
-    localStorage.setItem('sessionData', '');
     if (sessionData != '') {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         let lines = sessionData.split("\n");
 
-        
+
         const maxWidth = 180; // Adjust based on your document's margin
 
         // Use splitTextToSize to handle word wrap
@@ -105,6 +104,8 @@ function clearFields() {
     localStorage.setItem('sessionData', '');
     document.getElementById('queryInput').value = '';
     document.getElementById('queryList').innerHTML = '';
+    var divexcel = document.getElementById('exportsec');
+    divexcel.style.display = 'none'
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -149,6 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
             window.modifiedWorkbook = workbook;
         };
         reader.readAsArrayBuffer(file);
+        var divexcel = document.getElementById('addRows');
+        divexcel.style.display = 'block';
     });
 });
 

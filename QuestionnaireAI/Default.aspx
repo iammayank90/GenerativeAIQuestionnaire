@@ -100,7 +100,7 @@
     </nav>
     <main class="container">
         <div class="grid">
-            <section>
+            <div>
                 <hgroup>
                     <h2>Enter Your Queries</h2>
                     <h3>Simple and Efficient</h3>
@@ -113,12 +113,16 @@
                 </form>
                 <section aria-label="Query Results">
                     <h2>Results</h2>
-                    <ul id="queryList"></ul>
-                    <button type="button" onclick="exportquest()" class="export-button">Export</button>
-                    <input type="file" id="upload" accept=".xlsx, .xls" />
-                    <button id="addRows">Add Rows & Download</button>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+                    <ul id="queryList"></ul>                   
                 </section>
+                <div id="exportsec" style="display: none">
+                    <p>Export the AI generated responses to PDF</p>
+                     <button type="button" onclick="exportquest()" class="export-button" style="width: auto;">Export</button>
+                    <p>Choose MRQ or DDQ templates to add the AI generated responses</p>
+                    <input type="file" id="upload" accept=".xlsx, .xls" />                    
+                    <button type="button" id="addRows" style="display: none">Add Answers to Excel & Download</button>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+                </div>
             </section>
         </div>
     </main>
