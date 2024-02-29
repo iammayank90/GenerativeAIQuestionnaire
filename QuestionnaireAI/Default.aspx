@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="" AutoEventWireup="true"
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="QuestionnaireAI._Default" %>
 
     <!DOCTYPE html>
