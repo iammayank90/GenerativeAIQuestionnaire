@@ -16,10 +16,9 @@ function createquestions() {
             { "role": "user", "content": "Create a questionnaire to third party companies for top executives of" },
             { "role": "user", "content": input },
             { "role": "user", "content": "give 50 questions for due diligence" },
-            { "role": "user", "content": "Set the response in number order" },
-            { "role": "user", "content": "Make dropdown, multichose checkbox, radio button and text box questions as well" },
+            { "role": "user", "content": "Set the response in number order only and do not include extra answer other then numbered answers" },
             { "role": "user", "content": "By all questions third party should be accepted or rejected" },
-            { "role": "user", "content": "give appropriate answers only having number and don't give half or empty Answer" },
+            { "role": "user", "content": "give appropriate answers and don't give half or empty text" },
             { "role": "user", "content": "include all type of questions" }
         ],
         temperature: 1,
