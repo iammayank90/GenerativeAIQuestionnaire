@@ -4,7 +4,7 @@
 
 
 function createquestions() {
-    const apiKey = "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"; // Your OpenAI API key
+    const apiKey = "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"; // Your OpenAI API key
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
 
@@ -107,7 +107,6 @@ function clearFields() {
     document.getElementById('queryList').innerHTML = '';
 }
 
-
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('upload').addEventListener('change', function (e) {
         const file = e.target.files[0];
@@ -120,12 +119,28 @@ document.addEventListener('DOMContentLoaded', function () {
             const sheetName = "QuestionnaireItem";
             const worksheet = workbook.Sheets[sheetName];
 
-            // Add rows here. Example: add a row to the end of the sheet
-            const ref = XLSX.utils.decode_range(worksheet['!ref']);
-            const newRow = ref.e.r + 1; // Assuming there's at least one row
+            let resp = [];
+            var sessionData = localStorage.getItem('sessionData');
+            let lines = sessionData.split("\n");
+            // Loop through the length of the ff array
+            for (let i = 0; i < lines.length; i++) {
+                // Incrementing parts of the data
+                let genQuestNumber = 112 + i; // Incrementing genQuest112 based on loop iteration
+                let finalNumber = 256; // Incrementing the final number by the loop index
 
-            // Example: Adding data in the first and second columns of the new row
-            XLSX.utils.sheet_add_aoa(worksheet, [['QuestionnaireVersion', 1, 'genQuest112', 'hi mm', 'TextBox', 11, 'False', 'False', '', 'False', '', '', '', 'EN', 'genQuest112', 'genQuest117', 'True', 'CustomQuestionMapping', 0]], { origin: -1 });
+                // Construct the string with incremented values and the current item from ff array
+                let item = [
+                    'QuestionnaireVersion', 1, `genQuest${genQuestNumber}`, lines[i], 'TextBox', 11, 'False', 'False', '', 'False', '', '', '', 'EN', `genQuest${genQuestNumber}`, `genQuest${genQuestNumber}`, 'True', 'CustomQuestionMapping', finalNumber
+                ];
+
+                // Add the constructed item to the resp array
+                resp.push(item);
+            }
+
+            // Loop through each row in the rows array and add it to the sheet
+            resp.forEach(row => {
+                XLSX.utils.sheet_add_aoa(worksheet, [row], { origin: -1 });
+            });
 
             // Update workbook with the new sheet data
             workbook.Sheets[sheetName] = worksheet;

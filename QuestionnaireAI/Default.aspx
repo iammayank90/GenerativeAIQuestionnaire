@@ -115,6 +115,9 @@
                     <h2>Results</h2>
                     <ul id="queryList"></ul>
                     <button type="button" onclick="exportquest()" class="export-button">Export</button>
+                    <input type="file" id="upload" accept=".xlsx, .xls" />
+                    <button id="addRows">Add Rows & Download</button>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
                 </section>
             </section>
         </div>
