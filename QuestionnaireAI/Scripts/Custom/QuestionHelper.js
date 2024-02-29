@@ -107,3 +107,45 @@ function clearFields() {
     document.getElementById('queryInput').value = '';
     document.getElementById('queryList').innerHTML = '';
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('upload').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            // Assuming you're working with the first sheet
+            const sheetName = "QuestionnaireItem";
+            const worksheet = workbook.Sheets[sheetName];
+
+            // Add rows here. Example: add a row to the end of the sheet
+            const ref = XLSX.utils.decode_range(worksheet['!ref']);
+            const newRow = ref.e.r + 1; // Assuming there's at least one row
+
+            // Example: Adding data in the first and second columns of the new row
+            XLSX.utils.sheet_add_aoa(worksheet, [['QuestionnaireVersion', 1, 'genQuest112', 'hi mm', 'TextBox', 11, 'False', 'False', '', 'False', '', '', '', 'EN', 'genQuest112', 'genQuest117', 'True', 'CustomQuestionMapping', 0]], { origin: -1 });
+
+            // Update workbook with the new sheet data
+            workbook.Sheets[sheetName] = worksheet;
+
+            // Store workbook globally for access in the download function
+            window.modifiedWorkbook = workbook;
+        };
+        reader.readAsArrayBuffer(file);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('addRows').addEventListener('click', function () {
+        if (!window.modifiedWorkbook) {
+            alert('Please upload a file first.');
+            return;
+        }
+
+        // Save the modified workbook
+        XLSX.writeFile(window.modifiedWorkbook, 'ModifiedFile.xlsx');
+    });
+});
