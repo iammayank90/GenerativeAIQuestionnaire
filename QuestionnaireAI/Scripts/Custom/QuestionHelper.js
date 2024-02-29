@@ -3,10 +3,8 @@
 })();
 
 
-
-
 function createquestions() {
-    const apiKey = "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"; // Your OpenAI API key
+    const apiKey = "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"; // Your OpenAI API key
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
 
@@ -21,8 +19,7 @@ function createquestions() {
             { "role": "user", "content": "Set the response in number order" },
             { "role": "user", "content": "Make yes/no, dropdown, multichose checkbox, radio button and text box questions as well" },
             { "role": "user", "content": "By all questions third party should be accepted or rejected" },
-            { "role": "user", "content": "give appropriate answers and don't give half or empty text" },
-            { "role": "user", "content": "include all type of questions" }
+            { "role": "user", "content": "give appropriate answers only having number and don't give half or empty Answer" }
         ],
         temperature: 1,
         max_tokens: 256,
@@ -67,21 +64,7 @@ function createquestions() {
 }
 
 
-function exportquest() {
-
-    // var settings = {
-    // "url": "http://localhost:5215/WeatherForecast",
-    // "method": "POST",
-    // "timeout": 0,
-    // "headers": {
-    // "Content-Type": "application/json"
-    // },
-    // "data": JSON.stringify({"GptResponse": "jjk"}), 
-    // };
-
-    // $.ajax(settings).done(function (response) {
-    // console.log(response);
-    // });
+function exportquest() {    
 
     var sessionData = localStorage.getItem('sessionData');
     localStorage.setItem('sessionData', '');
@@ -90,26 +73,26 @@ function exportquest() {
         const doc = new jsPDF();
         let lines = sessionData.split("\n");
 
-        doc.text(sessionData.split("\n"), 20, 20);
+        
+        const maxWidth = 180; // Adjust based on your document's margin
 
+        // Use splitTextToSize to handle word wrap
+        const splitText = doc.splitTextToSize(sessionData, maxWidth);
 
-        let y = 20; // Initial Y offset
+        // Initial Y offset
+        let y = 20;
 
-        lines.forEach(line => {
-            if (line.trim() !== '') {
-                doc.text(line, 20, y);
-                y += 10; // Increase Y offset for each line
-            } else {
-                y += 5; // Add a smaller space for empty lines (paragraph spacing)
-            }
-
-            // Check if we're near the bottom of the page
+        // Loop through the lines returned by splitTextToSize
+        splitText.forEach(line => {
+            // Check if we're near the bottom of the page to add a new page
             if (y > 280) {
                 doc.addPage();
-                y = 20; // Reset Y offset
+                y = 20; // Reset Y position
             }
-        });
 
+            doc.text(line, 20, y);
+            y += 10; // Increment Y position for each line
+        });
 
         doc.save("example.pdf");
     }
