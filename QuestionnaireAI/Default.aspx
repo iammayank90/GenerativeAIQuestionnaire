@@ -100,7 +100,7 @@
     </nav>
     <main class="container">
         <div class="grid">
-            <div>
+            <section>
                 <hgroup>
                     <h2>Enter Your Queries</h2>
                     <h3>Simple and Efficient</h3>
@@ -123,8 +123,8 @@
                     <button type="button" id="addRows" style="display: none">Add Answers to Excel & Download</button>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
                 </div>
-            </section>
-        </div>
+            </section>       
+            </div>
     </main>
     <footer class="container">
         <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></small>
