@@ -208,8 +208,8 @@
                 <form id="queryForm" class="grid">
                     <input type="text" id="queryInput" name="queryInput" placeholder="Enter vendor's bussiness type" aria-label="Query input" required />
                     <div id="loader" style="display: none;"></div>
-                    <button type="button" onclick="showLoader(); createquestions()">Submit</button>
-                    <button type="button" onclick="clearFields()">Clear</button>
+                    <button type="button" onclick="createquestions();">Submit</button>
+                    <button type="button" onclick="clearFields();">Clear</button>
                 </form>
                 <section aria-label="Query Results">
                     <h2 class="result">Results</h2>

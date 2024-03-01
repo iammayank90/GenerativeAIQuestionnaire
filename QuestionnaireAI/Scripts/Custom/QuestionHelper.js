@@ -4,7 +4,7 @@
 
 
 function createquestions() {
-    clearFields();
+    clearFields(false);
     
     const apiKey = "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";
     const apiUrl = "https://api.openai.com/v1/chat/completions";
@@ -19,7 +19,7 @@ function createquestions() {
             { "role": "system", "content": "You are a helpful assistant." },
             { "role": "user", "content": "Create a questionnaire to third party companies for top executives of" },
             { "role": "user", "content": input },
-            { "role": "user", "content": "give 10 questions for due diligence" },
+            { "role": "user", "content": "give 10 most important questions for due diligence" },
             { "role": "user", "content": "Set the response in number order only and do not include extra answer other then numbered answers" },
             { "role": "user", "content": "By all questions third party should be accepted or rejected" },
             { "role": "user", "content": "give appropriate answers and don't give half or empty text" },
@@ -125,9 +125,11 @@ function exportquest() {
     }
 }
 
-function clearFields() {
-    localStorage.setItem('sessionData', '');
-    document.getElementById('queryInput').value = '';
+function clearFields(inputclear) {
+    if (inputclear != false) {
+        document.getElementById('queryInput').value = '';
+    }
+    localStorage.setItem('sessionData', '');    
     document.getElementById('dynamic-list').innerHTML = '';
     showhide('exportsec', 'none');
     showhide('filter-input', 'none');
