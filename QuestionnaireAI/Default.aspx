@@ -71,7 +71,7 @@
         }
 
         button {
-            background-color: hsl(205 25% 57% / 1);
+            background-color: rgb(85 105 120);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -145,7 +145,45 @@
             margin-right: 16px;
             margin-top: 0px;
             color: hsl(0deg 0% 100%);
+        }
 
+        #loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #dc2323; /* Blue */
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            animation: spin 2s linear infinite;
+            position: fixed; /* Positioned relative to the viewport */
+            left: 50%;
+            top: 60%;
+            transform: translate(-50%, -50%);
+            z-index: 1000; /* Ensures it's on top of other content */
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .result {
+            margin-bottom: 19px;
+            margin-top: -5px;
+        }
+
+        .line {
+            border: 1.5px solid;
+            margin-top: -44px;
+            margin-bottom: 18px;
+        }
+
+        .choosefile {
+            margin-bottom: 10px;
         }
     </style>
 
@@ -155,36 +193,39 @@
         <img class="image-dil" alt="Diligent" loading="lazy" width="157" height="44" decoding="async" data-nimg="1" class="mr-8" style="color: transparent" srcset="https://www.diligent.com/_next/image?url=%2Flogo%2Fdiligent_logo_fullcolor_rgb.svg&amp;w=256&amp;q=75 1x, https://www.diligent.com/_next/image?url=%2Flogo%2Fdiligent_logo_fullcolor_rgb.svg&amp;w=384&amp;q=75 2x" src="/_next/image?url=%2Flogo%2Fdiligent_logo_fullcolor_rgb.svg&amp;w=384&amp;q=75">
     </a>
     <nav class="container-fluid">
-        <strong class="quest">QuestionnaireAI</strong>
-        <a class="home" href="#"> <strong>Home</strong></a>
+        <strong class="quest">Questionnaire-AI</strong>
+        <a class="home" href="#"><strong>Home</strong></a>
     </nav>
     <main class="container">
         <div class="grid">
             <section>
                 <hgroup>
-                    <h2>Enter Your Queries</h2>
-                    <h3>QuestionnaireAI is an AI tool for creating and analyzing questionnaires, enhancing data collection and analysis.</h3>
+                    <h2>Enter your Queries</h2>
+                    <h3>Questionnaire-AI is an AI tool for creating questionnaires, enhancing data collection and analysis.</h3>
                 </hgroup>
                 <p>Manage and export responses with ease to import in Forms and workflow.</p>
                 <form id="queryForm" class="grid">
                     <input type="text" id="queryInput" name="queryInput" placeholder="Enter vendor's bussiness type" aria-label="Query input" required />
-                    <button type="button" onclick="createquestions()">Submit</button>
+                    <div id="loader" style="display: none;"></div>
+                    <button type="button" onclick="showLoader(); createquestions()">Submit</button>
                     <button type="button" onclick="clearFields()">Clear</button>
                 </form>
                 <section aria-label="Query Results">
-                    <h2>Results</h2>
+                    <h2 class="result">Results</h2>
                     <div id="list-container">
                         <input type="text" id="filter-input" placeholder="Filter items..." style="display: none">
                         <ul id="dynamic-list"></ul>
                     </div>
                 </section>
+
                 <div id="exportsec" style="display: none">
-                    <p>Export the AI generated responses to PDF</p>
-                    <button type="button" onclick="exportquest()" class="export-button" style="width: auto;">Export Response to PDF</button>
-                    <p>Choose MRQ or DDQ templates to add the AI generated responses</p>
+                    <p class="line"></p>
+                    <p class="choosefile">Choose MRQ or DDQ templates to add the AI generated responses</p>
                     <input type="file" id="upload" accept=".xlsx, .xls" />
                     <button type="button" id="addRows" style="display: none">Add Answers to Excel & Download</button>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+                    <p class="choosefile">Export the AI generated responses to PDF</p>
+                    <button type="button" onclick="exportquest()" class="export-button" style="width: auto;">Export Response to PDF</button>
                 </div>
             </section>
         </div>
