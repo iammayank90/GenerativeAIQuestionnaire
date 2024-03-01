@@ -5,6 +5,7 @@
 
 function createquestions() {
     clearFields();
+    showLoader();
     const apiKey = "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";
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
