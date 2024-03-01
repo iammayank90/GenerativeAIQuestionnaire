@@ -21,10 +21,12 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #da898c;
+            background-image: linear-gradient(147deg, #da898c 0%, #59090c 74%);
         }
 
         nav {
-            background-color: var(--primary-color);
+            background-color: #dc2323;
             color: white;
             margin-bottom: 2rem;
         }
@@ -59,8 +61,17 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
+        .container-fluid {
+            width: 63%;
+            margin-right: 282px;
+            margin-left: auto;
+            padding-right: var(--spacing);
+            padding-left: var(--spacing);
+            height: 52px;
+        }
+
         button {
-            background-color: var(--primary-color);
+            background-color: hsl(205 25% 57% / 1);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -69,7 +80,7 @@
         }
 
             button:hover {
-                background-color: #64a3ff;
+                background-color: hsl(205deg 33.19% 73.83%);
             }
 
         #queryForm {
@@ -85,53 +96,67 @@
             border-radius: 5px;
         }
 
-       #list-container {
-  font-family: Arial, sans-serif;
-}
+        #list-container {
+            font-family: Arial, sans-serif;
+        }
 
-#filter-input {
-  margin-bottom: 20px;
-  width: calc(100% - 20px); /* Adjust input width to account for padding */
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box; /* Ensures padding is included in the width */
-}
+        #filter-input {
+            margin-bottom: 20px;
+            width: calc(100% - 20px); /* Adjust input width to account for padding */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensures padding is included in the width */
+        }
 
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border: 1px solid #eee;
-  border-radius: 5px;
-}
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
 
-ul li {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  transition: background-color 0.3s;
-}
+            ul li {
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+                transition: background-color 0.3s;
+            }
 
-ul li:last-child {
-  border-bottom: none;
-}
+                ul li:last-child {
+                    border-bottom: none;
+                }
 
-ul li:hover {
-  background-color: #f0f0f0;
-}
+                ul li:hover {
+                    background-color: #f0f0f0;
+                }
 
+        .image-dil {
+            margin-bottom: -75px !important;
+            margin-left: 50px !important;
+        }
 
+        .quest {
+            margin-left: 16px;
+            margin-top: 9px;
+        }
+
+        .home {
+            margin-right: 16px;
+            margin-top: 0px;
+            color: hsl(0deg 0% 100%);
+
+        }
     </style>
 
 </head>
 <body>
+    <a href="/">
+        <img class="image-dil" alt="Diligent" loading="lazy" width="157" height="44" decoding="async" data-nimg="1" class="mr-8" style="color: transparent" srcset="https://www.diligent.com/_next/image?url=%2Flogo%2Fdiligent_logo_fullcolor_rgb.svg&amp;w=256&amp;q=75 1x, https://www.diligent.com/_next/image?url=%2Flogo%2Fdiligent_logo_fullcolor_rgb.svg&amp;w=384&amp;q=75 2x" src="/_next/image?url=%2Flogo%2Fdiligent_logo_fullcolor_rgb.svg&amp;w=384&amp;q=75">
+    </a>
     <nav class="container-fluid">
-        <ul>
-            <li><strong>QuestionnaireAI</strong></li>
-        </ul>
-        <ul>
-            <li><a href="#">Home</a></li>
-        </ul>
+        <strong class="quest">QuestionnaireAI</strong>
+        <a class="home" href="#"> <strong>Home</strong></a>
     </nav>
     <main class="container">
         <div class="grid">
