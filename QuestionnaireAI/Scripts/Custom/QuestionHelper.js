@@ -5,11 +5,13 @@
 
 function createquestions() {
     clearFields();
-    showLoader();
-    const apiKey = "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";
+    
+    const apiKey = "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";
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
-
+	
+	if(input!=''){
+	showLoader();
     // Data for the POST request
     const postData = {
         model: "gpt-3.5-turbo",
@@ -81,7 +83,9 @@ function createquestions() {
         .finally(() => {
             hideLoader(); // Hide loader when operation is complete
         });
-
+	
+	
+}
 }
 
 
@@ -114,7 +118,7 @@ function exportquest() {
             y += 10; // Increment Y position for each line
         });
 
-        doc.save("example.pdf");
+        doc.save("due-diligence-questionnaire.pdf");
     }
     else {
         alert('No data to export');
@@ -184,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Save the modified workbook
-        XLSX.writeFile(window.modifiedWorkbook, 'ModifiedFile.xlsx');
+        XLSX.writeFile(window.modifiedWorkbook, 'due-diligence-questionnaire.xlsx');
     });
 });
 
