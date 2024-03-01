@@ -16,14 +16,14 @@ function createquestions() {
             { "role": "system", "content": "You are a helpful assistant." },
             { "role": "user", "content": "Create a questionnaire to third party companies for top executives of" },
             { "role": "user", "content": input },
-            { "role": "user", "content": "give 50 questions for due diligence" },
+            { "role": "user", "content": "give 10 questions for due diligence" },
             { "role": "user", "content": "Set the response in number order only and do not include extra answer other then numbered answers" },
             { "role": "user", "content": "By all questions third party should be accepted or rejected" },
             { "role": "user", "content": "give appropriate answers and don't give half or empty text" },
             { "role": "user", "content": "include all type of questions" }
         ],
         temperature: 1,
-        max_tokens: 256,
+        max_tokens: 512,
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0
@@ -76,7 +76,10 @@ function createquestions() {
         showhide('filter-input', 'block');
     }).catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
-    });
+    })
+        .finally(() => {
+            hideLoader(); // Hide loader when operation is complete
+        });
 
 }
 
@@ -188,5 +191,13 @@ function showhide(divId, displayVal) {
     var divElem = document.getElementById(divId);
     if (divElem != '') {
         divElem.style.display = displayVal;
-    }    
+    }
+}
+
+function showLoader() {
+    document.getElementById('loader').style.display = 'block';
+}
+
+function hideLoader() {
+    document.getElementById('loader').style.display = 'none';
 }
