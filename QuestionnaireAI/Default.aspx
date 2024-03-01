@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Questionnaire-AI</title>
     <!-- Include external JavaScript file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
@@ -26,7 +26,7 @@
         }
 
         nav {
-            background-color: #dc2323;
+            background-color: #d35252;
             color: white;
             margin-bottom: 2rem;
         }
@@ -59,6 +59,7 @@
             padding: 2rem;
             background-color: #fff;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding-bottom: 150px;
         }
 
         .container-fluid {
@@ -149,7 +150,7 @@
 
         #loader {
             border: 16px solid #f3f3f3; /* Light grey */
-            border-top: 16px solid #dc2323; /* Blue */
+            border-top: 16px solid #d35252; /* Blue */
             border-radius: 50%;
             width: 65px;
             height: 65px;
