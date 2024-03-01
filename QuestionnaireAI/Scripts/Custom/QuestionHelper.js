@@ -4,7 +4,8 @@
 
 
 function createquestions() {
-    const apiKey = "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"; // Your OpenAI API key
+    clearFields();
+    const apiKey = "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";
     const apiUrl = "https://api.openai.com/v1/chat/completions";
     const input = document.getElementById('queryInput').value;
 
@@ -119,8 +120,9 @@ function exportquest() {
 function clearFields() {
     localStorage.setItem('sessionData', '');
     document.getElementById('queryInput').value = '';
-    document.getElementById('queryList').innerHTML = '';
+    document.getElementById('dynamic-list').innerHTML = '';
     showhide('exportsec', 'none');
+    showhide('filter-input', 'none');
 }
 
 document.addEventListener('DOMContentLoaded', function () {

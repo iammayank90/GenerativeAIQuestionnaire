@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/QuestionnaireAI/FileContentIndex/26e5f735-2449-4120-bafb-7b6d26c36530.vsidx
+/.vs/QuestionnaireAI/FileContentIndex/3d2eddea-c417-4551-8a55-9038a7e0eed7.vsidx
+/.vs/QuestionnaireAI/FileContentIndex/6f379be3-ac00-4f30-9288-dc3845080fad.vsidx
+/.vs/QuestionnaireAI/FileContentIndex/78b06f00-0e53-4f85-ae08-f4415b9b5044.vsidx
+/.vs/QuestionnaireAI/FileContentIndex/7ef36bb4-d054-4949-b2bb-6220f21dbd5f.vsidx
+/.vs/QuestionnaireAI/FileContentIndex/9b6281f9-6f4c-44b3-bf86-cfb759fdabe7.vsidx
+/.vs/QuestionnaireAI/FileContentIndex/b05b4e2c-94a8-4c3d-aa3b-b7a1710e1f79.vsidx
+/QuestionnaireAI/QuestionnaireAI.csproj.user
+/.gitignore
